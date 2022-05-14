@@ -3,6 +3,12 @@ const getGoals = (req, res) => {
 };
 
 const createGoal = (req, res) => {
+  let message = req.body.message;
+  if (!message) {
+    res.status(400);
+    throw new Error("Please add a message");
+  }
+  console.log(message);
   res.status(200).json({ message: "SET goals" });
 };
 
