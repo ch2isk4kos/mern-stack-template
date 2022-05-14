@@ -1,9 +1,14 @@
 const express = require("express");
+const colors = require("colors");
 const dotenv = require("dotenv").config();
-const { errorHandler } = require("./middlware/error.js");
+const { errorHandler } = require("./middlware/error");
+const { connectToMongoAtlas } = require("./config");
 const PORT = process.env.PORT || 3000;
 
 const app = express();
+
+// database
+connectToMongoAtlas();
 
 // middleware
 app.use(express.json()); // passing data from client with json
