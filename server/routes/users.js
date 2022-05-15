@@ -8,12 +8,13 @@ const {
   updateUser,
   deleteUser,
 } = require("../controllers/users.js");
+const { validateUser } = require("../middlware/auth.js");
 
 // services from controller
 router.post("/", createUser);
 router.post("/login", loginUser);
 router.post("/logout", logoutUser);
-router.get("/:id", getUser);
+router.get("/", validateUser, getUser);
 router.put("/:id", updateUser);
 router.delete("/:id", deleteUser);
 
