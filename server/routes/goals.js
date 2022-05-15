@@ -6,11 +6,12 @@ const {
   updateGoal,
   deleteGoal,
 } = require("../controllers/goals.js");
+const { validateUser } = require("../middlware/auth.js");
 
 // services from controller
-router.get("/", getGoals);
-router.post("/", createGoal);
-router.put("/:id", updateGoal);
-router.delete("/:id", deleteGoal);
+router.get("/", validateUser, getGoals);
+router.post("/", validateUser, createGoal);
+router.put("/:id", validateUser, updateGoal);
+router.delete("/:id", validateUser, deleteGoal);
 
 module.exports = router;
