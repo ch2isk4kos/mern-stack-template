@@ -49,7 +49,7 @@ const updateGoal = asyncHandler(async (req, res) => {
 
 const deleteGoal = asyncHandler(async (req, res) => {
   let goal = await Goal.findById(req.params.id);
-  // let id = req.params.id;
+
   // check for user of goal
   if (!goal) {
     res.status(401);
