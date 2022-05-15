@@ -1,32 +1,36 @@
-const createUser = (req, res) => {
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const asyncHandler = require("express-async-handler");
+
+const createUser = asyncHandler(async (req, res) => {
   //
   res.json({ message: "Register User" });
-};
+});
 
-const loginUser = (req, res) => {
+const loginUser = asyncHandler(async (req, res) => {
   //
   res.json({ message: "Login User" });
-};
+});
 
-const logoutUser = (req, res) => {
+const logoutUser = asyncHandler(async (req, res) => {
   //
   res.json({ message: "Logout User" });
-};
+});
 
-const getUser = (req, res) => {
+const getUser = asyncHandler(async (req, res) => {
   //
   res.json({ message: "Get User Data" });
-};
+});
 
-const updateUser = (req, res) => {
+const updateUser = asyncHandler(async (req, res) => {
   //
   res.json({ message: "Update User" });
-};
+});
 
-const deleteUser = (req, res) => {
+const deleteUser = asyncHandler(async (req, res) => {
   //
   res.json({ message: "Delete User" });
-};
+});
 
 module.exports = {
   createUser,
