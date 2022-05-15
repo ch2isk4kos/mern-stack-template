@@ -1,8 +1,8 @@
 const bcrypt = require("bcryptjs"); // encryption
 const jwt = require("jsonwebtoken"); // web sessions
-const { generateToken } = require("../auth/jwt.js");
 const asyncHandler = require("express-async-handler");
 const User = require("../models/User.js");
+const { generateToken } = require("../auth/jwt.js");
 
 const createUser = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body;
@@ -30,7 +30,7 @@ const createUser = asyncHandler(async (req, res) => {
     password: hashPassword,
   });
 
-  //. response
+  // response
   if (user) {
     res.status(201).json({
       _id: user.id,

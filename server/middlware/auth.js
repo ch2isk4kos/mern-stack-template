@@ -3,7 +3,7 @@ const asyncHandler = require("express-async-handler");
 const User = require("../models/User");
 
 const validateUser = asyncHandler(async (req, res, next) => {
-  const token = await User.findOne({ token });
+  let token;
 
   if (
     req.headers.authorization &&

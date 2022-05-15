@@ -14,7 +14,7 @@ const { validateUser } = require("../middlware/auth.js");
 router.post("/", createUser);
 router.post("/login", loginUser);
 router.post("/logout", logoutUser);
-router.get("/", validateUser, getUser);
+router.get("/:id", validateUser, getUser);
 router.put("/:id", updateUser);
 router.delete("/:id", deleteUser);
 
