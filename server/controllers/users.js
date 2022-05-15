@@ -29,6 +29,7 @@ const createUser = asyncHandler(async (req, res) => {
     password: hashPassword,
   });
 
+  //. response
   if (user) {
     res.status(201).json({
       _id: user.id,
@@ -39,8 +40,6 @@ const createUser = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Error creating user");
   }
-
-  res.json({ message: "Register User" });
 });
 
 const loginUser = asyncHandler(async (req, res) => {
