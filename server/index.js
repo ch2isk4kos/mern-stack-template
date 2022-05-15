@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: false })); // passing data from client vi
 
 // routes
 app.use("/api/v1/goals", require("./routes/goals"));
+app.use("/api/v1/users", require("./routes/users"));
 
 // error handling
 app.use(errorHandler); // overriding express default error handler with custom middleware
