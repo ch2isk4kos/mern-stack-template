@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs"); // encryption
 const jwt = require("jsonwebtoken"); // web sessions
+const { generateToken } = require("../auth/user");
 const asyncHandler = require("express-async-handler");
 const User = require("../models/User");
 
@@ -35,6 +36,7 @@ const createUser = asyncHandler(async (req, res) => {
       _id: user.id,
       username: user.username,
       email: user.email,
+      token: generateToken(user._id),
     });
   } else {
     res.status(400);
@@ -52,6 +54,7 @@ const loginUser = asyncHandler(async (req, res) => {
       _id: user.id,
       username: user.username,
       email: user.email,
+      token: generateToken(user._id),
     });
   } else {
     res.status(400);
