@@ -1,8 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import goalService from "./goalService";
 
-// let goal = JSON.parse(localStorage.getItem("goal"));
-
 const initialState = {
   goals: [],
   isError: false,
@@ -11,12 +9,44 @@ const initialState = {
   message: "",
 };
 
+export const createGoal = createAsyncThunk(
+  "goals/create",
+  async (goal, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await goalService.createGoal(goal, token);
+    } catch (error) {
+      const message =
+        (error.response && error.response.data && error.response.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 // redux actions
 export const goalSlice = createSlice({
   name: "goal",
   initialState,
   reducers: {
     reset: (state) => initialState,
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(createGoal.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(createGoal.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.goals.push(action.payload);
+      })
+      .addCase(createGoal.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      });
   },
 });
 
