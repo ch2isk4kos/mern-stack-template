@@ -68,12 +68,10 @@ const logoutUser = asyncHandler(async (req, res) => {
 });
 
 const getUser = asyncHandler(async (req, res) => {
-  const { _id, username, email } = await User.findById(req.user.id);
-  res.status(200).json({ id: _id, username: username, email: email });
+  res.status(200).json(req.user);
 });
 
 const updateUser = asyncHandler(async (req, res) => {
-  //
   res.json({ message: "Update User" });
 });
 
