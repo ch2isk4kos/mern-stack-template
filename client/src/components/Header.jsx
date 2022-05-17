@@ -8,6 +8,13 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
+
+  const handleOnLogout = () => {
+    dispatch(logout());
+    dispatch(reset());
+    navigate("/");
+  };
+
   return (
     <header className="header">
       <div className="logo">
@@ -16,9 +23,9 @@ const Header = () => {
       <ul>
         {user ? (
           <li>
-            <Link to="/logout">
+            <button className="btn" onClick={handleOnLogout}>
               <FaSignOutAlt /> Logout {user.username}
-            </Link>
+            </button>
           </li>
         ) : (
           <>
