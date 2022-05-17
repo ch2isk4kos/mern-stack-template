@@ -10,7 +10,14 @@ const Dashboard = () => {
     if (!user) navigate("/login");
   }, [user, navigate]);
 
-  return <div>Dashboard</div>;
+  return (
+    <div id="Dashboard">
+      <section className="heading">
+        <h1>Welcome, {user && user.username} </h1>
+        <p>Goals Dashboard</p>
+      </section>
+    </div>
+  );
 };
 
 export default Dashboard;
