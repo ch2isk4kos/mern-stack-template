@@ -8,15 +8,16 @@ const getGoals = asyncHandler(async (req, res) => {
 });
 
 const createGoal = asyncHandler(async (req, res) => {
-  let message = req.body.message;
-  let user = req.user.id;
-  if (!message) {
+  // let message = req.body.message;
+  // let user = req.user.id;
+  // if (!message) {
+  if (!req.body.goal) {
     res.status(400);
-    throw new Error("Please add a message");
+    throw new Error("Please add a goal");
   }
-  console.log(message);
+  console.log(req.body.goal);
 
-  let goal = await Goal.create({ message: message, user: user });
+  let goal = await Goal.create({ goal: req.body.goal, user: req.user.id });
   res.status(200).json(goal);
 });
 
