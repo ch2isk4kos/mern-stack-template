@@ -1,8 +1,15 @@
 # MERN Stack REST API
 
-## Server
+## Backend
 
 **Start The Server:**
-$ `npm run server `
+$ `npm run server`
+
+## Frontend
+
+**Start The Client:**
+$ `npm run client`
+
+</br >
 
 **Pro Tip:** Look in `package.json` to see the commands to run an application.
