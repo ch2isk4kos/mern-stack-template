@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import GoalForm from "../components/GoalForm";
+import Goal from "../components/Goal";
 import Spinner from "../components/Spinner";
 import { getGoals, reset } from "../features/goals/goalSlice";
 
@@ -38,7 +39,7 @@ const Dashboard = () => {
         >
           {goals && goals.length > 0 ? (
             goals.map((item) => {
-              return <p key={item._id}>{item.goal}</p>;
+              return <Goal key={item._id} item={item} />;
             })
           ) : (
             <p>No current goals</p>
